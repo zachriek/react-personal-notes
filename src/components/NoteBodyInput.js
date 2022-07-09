@@ -4,7 +4,6 @@ const NoteBodyInput = ({ addNote }) => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [titleLimit] = useState(50);
-    console.log(title);
 
     const handleChangeTitle = (e) => {
         setTitle(e.target.value.slice(0, titleLimit));

@@ -6,10 +6,10 @@ import { getInitialData } from './utils';
 
 const Notes = () => {
     const [notes, setNotes] = useState(getInitialData);
-    const [searchNotes] = useState(getInitialData);
+    const [searchNotes, setSearchNotes] = useState(getInitialData);
 
     const handleAddNote = ({ title, body }) => {
-        setNotes([
+        const newNotes = [
             ...notes,
             {
                 id: +new Date(),
@@ -18,12 +18,15 @@ const Notes = () => {
                 createdAt: new Date(),
                 archived: false,
             },
-        ]);
+        ];
+        setNotes(newNotes);
+        setSearchNotes(newNotes);
     };
 
     const handleDeleteNote = (id) => {
         const newNotes = notes.filter((note) => note.id !== id);
         setNotes(newNotes);
+        setSearchNotes(newNotes);
     };
 
     const handleArchiveNote = (isArchived, id) => {
