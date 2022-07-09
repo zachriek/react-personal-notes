@@ -19,7 +19,6 @@ const Notes = () => {
                 archived: false,
             },
         ]);
-        setSearchNotes(notes);
     };
 
     const handleDeleteNote = (id) => {
