@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import NoteHeader from './components/NoteHeader';
 import NoteBody from './components/NoteBody';
 import { getInitialData } from './utils';
@@ -19,6 +19,7 @@ const Notes = () => {
                 archived: false,
             },
         ]);
+        setSearchNotes(notes);
     };
 
     const handleDeleteNote = (id) => {
@@ -36,10 +37,6 @@ const Notes = () => {
         const newNotes = searchNotes.filter((note) => note.title.toString().toLowerCase().includes(title.toLowerCase()));
         setNotes(newNotes);
     };
-
-    useEffect(() => {
-        setSearchNotes(notes);
-    }, [notes]);
 
     return (
         <>
