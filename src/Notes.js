@@ -1,12 +1,12 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NoteHeader from './components/NoteHeader';
 import NoteBody from './components/NoteBody';
 import { getInitialData } from './utils';
 
 const Notes = () => {
     const [notes, setNotes] = useState(getInitialData);
-    const [searchNotes] = useState(getInitialData);
+    const [searchNotes, setSearchNotes] = useState(getInitialData);
 
     const handleAddNote = ({ title, body }) => {
         setNotes([
@@ -36,6 +36,10 @@ const Notes = () => {
         const newNotes = searchNotes.filter((note) => note.title.toString().toLowerCase().includes(title.toLowerCase()));
         setNotes(newNotes);
     };
+
+    useEffect(() => {
+        setSearchNotes(notes);
+    }, [notes]);
 
     return (
         <>
