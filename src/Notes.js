@@ -32,7 +32,13 @@ const Notes = () => {
     const handleArchiveNote = (isArchived, id) => {
         const newNotes = notes.filter((note) => note.id !== id);
         const updatedNote = notes.find((note) => note.id === id);
-        isArchived ? setNotes([...newNotes, { ...updatedNote, archived: false }]) : setNotes([...newNotes, { ...updatedNote, archived: true }]);
+        if (isArchived) {
+            setNotes([...newNotes, { ...updatedNote, archived: false }]);
+            setSearchNotes([...newNotes, { ...updatedNote, archived: false }]);
+        } else {
+            setNotes([...newNotes, { ...updatedNote, archived: true }]);
+            setSearchNotes([...newNotes, { ...updatedNote, archived: true }]);
+        }
     };
 
     const handleSearchNote = (title) => {

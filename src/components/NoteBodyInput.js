@@ -15,6 +15,7 @@ const NoteBodyInput = ({ addNote }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (title === '' || body === '') return window.alert('Input tidak boleh kosong!');
         addNote({ title, body });
     };
 
@@ -23,8 +24,8 @@ const NoteBodyInput = ({ addNote }) => {
             <h2>Buat catatan</h2>
             <form onSubmit={handleSubmit}>
                 <p className="note-input__title__char-limit">Sisa karakter: {titleLimit - title.length}</p>
-                <input className="note-input__title" type="text" placeholder="Ini adalah judul ..." value={title} onChange={handleChangeTitle} required />
-                <textarea className="note-input__body" type="text" placeholder="Tuliskan catatanmu di sini ..." value={body} onChange={handleChangeBody} required></textarea>
+                <input className="note-input__title" type="text" placeholder="Ini adalah judul ..." value={title} onChange={handleChangeTitle} />
+                <textarea className="note-input__body" type="text" placeholder="Tuliskan catatanmu di sini ..." value={body} onChange={handleChangeBody}></textarea>
                 <button type="submit">Buat</button>
             </form>
         </div>
